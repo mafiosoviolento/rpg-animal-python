@@ -1,5 +1,5 @@
 class Ambiente:
-    def __init__(self, nome):
+    def __init__(self, nome): 
         self.nome = nome
 
     def verificaDesvantagens(self, nome, habitatePersonagem):

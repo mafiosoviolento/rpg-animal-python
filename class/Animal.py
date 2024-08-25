@@ -1,6 +1,6 @@
 import Personagem as personagem
 
-class Animal(personagem.Personagem):
+class Animal(personagem.Personagem): 
 
     def __init__(self, nome, vida, ataque, defesa, agilidade, statusVida, especie, movimento, habitat, idade):
         super().__init__(nome, vida, ataque, defesa, agilidade, statusVida)

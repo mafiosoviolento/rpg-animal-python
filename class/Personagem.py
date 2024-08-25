@@ -5,7 +5,7 @@ class Personagem:
         self.ataque = ataque
         self.defesa = defesa
         self.agilidade = agilidade
-        self.statusVido = statusVida
+        self.statusVido = statusVida 
 
     def atacar(self):
         return self.ataque
@@ -17,5 +17,4 @@ class Personagem:
         if self.defesa < ataque:
             dano = ataque - self.defesa
             self.vida -= dano
-    
     

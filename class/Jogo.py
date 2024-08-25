@@ -31,7 +31,7 @@ class Jogo:
             
             if valor == 1:
                 atacante = self.personagem1
-                defensor = self.personagem2
+                defensor = self.personagem2 
             else:
                 atacante = self.personagem2
                 defensor = self.personagem1
