@@ -13,8 +13,7 @@ class Personagem:
     def defender(self):
         return self.defesa
     
-    def receber_dano(self, ataque):
-        if self.defesa < ataque:
-            dano = ataque - self.defesa
-            self.vida -= dano
+    def receber_dano(self, dano):
+        self.vida -= dano
+        print(f"O personagem {self.nome} recebeu um dano de {dano} e agora tem a vida: {self.vida}")
     

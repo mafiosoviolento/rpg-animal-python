@@ -10,9 +10,7 @@ class Jogo:
 
     def iniciarJogo(self):
         print("Jogo iniciado")
-        print(self.personagem1.nome)
         self.defineAmbiente()
-        print(self.vidas)
         self.batalha()
 
     def finalizarJogo(self):
@@ -23,40 +21,36 @@ class Jogo:
         self.personagem2 = personagem2
 
     def defineAmbiente(self):
-        ambiente.Ambiente.criaAmbiente(self)
+        ambiente.Ambiente.criaAmbiente(self, ambiente)
     
     def batalha(self):
         while self.personagem1.statusVida == 'vivo' and self.personagem2.statusVida == 'vivo':
             valor = random.randint(1, 2)
-            
             if valor == 1:
                 atacante = self.personagem1
-                defensor = self.personagem2 
+                defensor = self.personagem2
             else:
                 atacante = self.personagem2
                 defensor = self.personagem1
 
+            print(f"O personagem {atacante.nome} é o atacante")
+            print(f"O personagem {defensor.nome} é o Defensor")
+
             ataqueTotal = atacante.agilidade * atacante.ataque
             defesaTotal = defensor.agilidade * defensor.defesa
 
-            somaGeral = ataqueTotal + defesaTotal 
-
+            porcTotalAtaque =  ataqueTotal / ((ataqueTotal + defesaTotal) / 100)
             # calcular a soma a portcentagem de chance de vencer esse ataque
+            if random.randint(1, 100) < porcTotalAtaque:
+                dano = atacante.ataque - defensor.defesa
+                defensor.receber_dano(dano)
+            else:
+                print(f"O personagem {atacante.nome} errou o ataque")
+            
+            print("-"*150)
 
             # cria a aletoriedade colocando a % recebida com parametro do random random de 1 a 100
-
-
-            self.personagem1.statusVida = 'morto'
-
-            
-            
-
-
-
-
-personagem1 = animal.Animal('Leão', 1000, 400, 200, 6, 'vivo', 'Felino', 'Anda', 'Saavana', 15)
-personagem2 = animal.Animal('Tigre', 1200, 350, 200, 6, 'vivo', 'Felino', 'Anda', 'Selva', 22)
-
-jogo = Jogo()
-jogo.definePersonagem(personagem1, personagem2)
-jogo.iniciarJogo()
+            if defensor.vida <= 0:
+                defensor.statusVida = 'morto'
+                print(f"O personagem {defensor.nome} morreu")
+                print(f"O personagem {atacante.nome} ganhou")
