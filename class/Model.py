@@ -1,13 +1,12 @@
 import requests
 
 class Model:
-    def __init__(self):
-        self.urlBase = 'http://localhost:3000/'
+    def __init__(self, urlBase):
+        self.urlBase = urlBase
 
-    def getAmbientes(self, endpoint):
+    def getDadosApi(self, endpoint):
         url = self.urlBase + endpoint
-        response = requests.get(url)
-        return response
+        return requests.get(url)
     
 
         # response = requests.get(url)

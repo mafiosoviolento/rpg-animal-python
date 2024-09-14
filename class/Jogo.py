@@ -7,10 +7,13 @@ class Jogo:
         self.vidas = 3
         self.personagem1 = None
         self.personagem2 = None
+        self.ambiente = None
+        self.urlBase = 'http://localhost:3000/'
 
     def iniciarJogo(self):
         print("Jogo iniciado")
         self.defineAmbiente()
+        self.verificaDesvantagensAmbiente()
         self.batalha()
 
     def finalizarJogo(self):
@@ -21,7 +24,20 @@ class Jogo:
         self.personagem2 = personagem2
 
     def defineAmbiente(self):
-        ambiente.Ambiente.criaAmbiente(self, ambiente)
+        self.ambiente = ambiente.Ambiente.criaAmbiente(self, ambiente)
+
+    def verificaDesvantagensAmbiente(self):
+        if self.personagem1.habitat != self.ambiente:
+            self.retornaDesvantagem(self.personagem1)
+            print(f"personagem {self.personagem1.nome} teve desvantagem a nova agilidade é {self.personagem1.agilidade}")
+
+        if self.personagem2.habitat != self.ambiente:
+            self.retornaDesvantagem(self.personagem2)
+            print(f"personagem {self.personagem2.nome} teve desvantagem a nova agilidade é {self.personagem2.agilidade}")
+
+    def retornaDesvantagem(self, personagem):
+        porc = 30
+        personagem.agilidade = personagem.agilidade - (personagem.agilidade * porc / 100)
     
     def batalha(self):
         while self.personagem1.statusVida == 'vivo' and self.personagem2.statusVida == 'vivo':

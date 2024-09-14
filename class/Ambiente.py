@@ -1,4 +1,5 @@
 import Model as model
+import random
 class Ambiente:
     def __init__(self, nome):
         self.nome = nome
@@ -8,5 +9,7 @@ class Ambiente:
 
     def criaAmbiente(self, ambientes):
         print("O ambiente foi criado")
-        ambiente = model.Model.getAmbientes(ambientes)
-        print(ambiente)
+        ambientes = model.Model.getDadosApi(self,"ambientes")
+        qtdAmbientes = len(ambientes.json())
+        alet = random.randint(0, qtdAmbientes - 1)
+        return ambientes.json()[alet]['nome']
