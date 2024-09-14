@@ -1,4 +1,5 @@
 import requests
+import json
 
 class Model:
     def __init__(self, urlBase):
@@ -7,7 +8,17 @@ class Model:
     def getDadosApi(self, endpoint):
         url = self.urlBase + endpoint
         return requests.get(url)
-    
+
+    def setDadosApi(self, endpoint, data):
+        url = self.urlBase + endpoint
+        headers = {
+            'Content-Type': 'application/vnd.api+json',
+        }
+        response = requests.post(url, headers=headers, json=data)
+        if response.status_code == 201:
+            return True
+        else:
+            return False
 
         # response = requests.get(url)
 

@@ -14,3 +14,6 @@ class Animal(personagem.Personagem):
         self.movimento = movimento
         self.habitat = habitat
         self.idade = idade
+
+    def cadastrarAnimal(self):
+        print("Cadastrando um novo animal")

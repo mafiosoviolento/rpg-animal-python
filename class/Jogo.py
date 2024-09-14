@@ -11,7 +11,6 @@ class Jogo:
         self.urlBase = 'http://localhost:3000/'
 
     def iniciarJogo(self):
-        print("Jogo iniciado")
         self.defineAmbiente()
         self.verificaDesvantagensAmbiente()
         self.batalha()
@@ -24,7 +23,7 @@ class Jogo:
         self.personagem2 = personagem2
 
     def defineAmbiente(self):
-        self.ambiente = ambiente.Ambiente.criaAmbiente(self, ambiente)
+        self.ambiente = ambiente.Ambiente.defineAmbiente(self, ambiente)
 
     def verificaDesvantagensAmbiente(self):
         if self.personagem1.habitat != self.ambiente:
@@ -70,3 +69,17 @@ class Jogo:
                 defensor.statusVida = 'morto'
                 print(f"O personagem {defensor.nome} morreu")
                 print(f"O personagem {atacante.nome} ganhou")
+
+    def menuIniciarJogo(self):
+        print("Jogo iniciado")
+        print('Se você deseja cadastrar um novo personagem ou ambiente digite 1')
+        print('Iniciar partida, digite 2')
+        escolha = int(input())
+        if escolha == 1:
+            print('Para cadastrar um novo personagem digite 1')
+            print('Para cadastrar um novo ambiente digite 2')
+            escolha2 = int(input())
+            if escolha2 == 1:
+                self.cadastrarPersonagem(self)
+            else:
+                ambiente.Ambiente.cadastrarAmbiente(self)
