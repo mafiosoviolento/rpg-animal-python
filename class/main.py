@@ -8,5 +8,8 @@ personagem2 = animal.Animal('Tigre', 1200, 350, 200, 7, 'vivo', 'Felino', 'Anda'
 
 jogo = jogo.Jogo()
 jogo.menuIniciarJogo()
+jogo.definePersonagem(personagem1, personagem2)
+jogo.iniciarJogo()
+
 # jogo.definePersonagem(personagem1, personagem2)
-# jogo.iniciarJogo()
+# jogo.iniciarJogo()1
