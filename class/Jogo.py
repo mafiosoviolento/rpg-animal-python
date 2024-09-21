@@ -80,6 +80,6 @@ class Jogo:
             print('Para cadastrar um novo ambiente digite 2')
             escolha2 = int(input())
             if escolha2 == 1:
-                self.cadastrarPersonagem(self)
+                animal.Animal.cadastrarAnimal(self)
             else:
                 ambiente.Ambiente.cadastrarAmbiente(self)

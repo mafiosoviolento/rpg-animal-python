@@ -1,4 +1,5 @@
 import Personagem as personagem
+import Model as model
 
 class Animal(personagem.Personagem): 
 
@@ -15,5 +16,18 @@ class Animal(personagem.Personagem):
         self.habitat = habitat
         self.idade = idade
 
+
+
     def cadastrarAnimal(self):
-        print("Cadastrando um novo animal")
+        idAnimal = 8
+        animalNome = str(input("Digite o animal a ser criado:  "))
+        data = {
+            "id": idAnimal,
+            "nome": animalNome
+        }
+        resposta = model.Model.setDadosApi(self, "animais", data)
+        if(resposta):
+            print("Animal Cadastrado com sucesso")
+        else:
+            print('Ouve um erro ao cadastrar o animal')
+
